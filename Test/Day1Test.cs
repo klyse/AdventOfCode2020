@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Solver;
 using Solver.Algorithms;
-using Solver.Model;
+using Solver.Algorithms.Day1;
 
 namespace Test
 {

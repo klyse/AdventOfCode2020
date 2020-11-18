@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Solver.Base;
-using Solver.Model;
 
-namespace Solver.Algorithms
+
+namespace Solver.Algorithms.Day1
 {
 	public class Day1Solver : ISolver<int, Day1Input>
 	{

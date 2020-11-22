@@ -1,6 +1,6 @@
 ﻿namespace Solver.Base
 {
-	public interface IInput<out TType>
+	public interface IParser<out TType>
 	{
 		TType Parse(string[] values);
 	}

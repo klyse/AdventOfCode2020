@@ -1,40 +1,38 @@
 using System;
 using NUnit.Framework;
 using Solver;
-using Solver.Algorithms;
-using Solver.Algorithms.Day1;
+using Solver.Challenges.Day1;
 
 namespace Test
 {
 	public class Day1Test
 	{
-		private const string File = "day1.txt";
+		private string[] _input;
+		private Day1Parser _parser;
 		private Day1Solver _solver;
 
 		[SetUp]
 		public void SetUp()
 		{
 			_solver = new Day1Solver();
+			_parser = new Day1Parser();
+			_input = FileHelpers.Read(1);
 		}
 
 		[Test]
 		public void Star1()
 		{
-			var fileInput = File.Read();
-			var input = new Day1Parser().Parse(fileInput);
-
+			var input = _parser.Parse(_input);
 			var solution = _solver.Star1(input);
 
 			Console.WriteLine(solution);
 			Assert.AreEqual(3212842, solution);
 		}
-		
+
 		[Test]
 		public void Star2()
 		{
-			var fileInput = File.Read();
-			var input = new Day1Parser().Parse(fileInput);
-
+			var input = _parser.Parse(_input);
 			var solution = _solver.Star2(input);
 
 			Console.WriteLine(solution);

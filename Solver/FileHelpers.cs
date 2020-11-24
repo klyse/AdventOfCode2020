@@ -6,28 +6,30 @@ namespace Solver
 {
 	public static class FileHelpers
 	{
-		public static string[] Read(int day)
+		public static string[] Read(string fileName)
 		{
-			var filePath = EnvironmentConstants.InputPath(day);
+			var filePath = EnvironmentConstants.InputPath(fileName);
 			var readAllLines = File.ReadAllLines(filePath);
 			return readAllLines;
 		}
 
-		public static void Write(int day, string fileName, string[] lines)
+		public static void Write(string challenge, string fileName, string[] lines)
 		{
-			var filePath = Path.Combine(EnvironmentConstants.OutputPath(day), fileName);
+			var filePath = EnvironmentConstants.OutputPath(challenge,fileName);
+			var fileDirectory = Path.GetDirectoryName(filePath);
+			if (string.IsNullOrWhiteSpace(fileDirectory))
+				throw new NullReferenceException("Directory does not exist");
 
-			if (!Directory.Exists(EnvironmentConstants.OutputPath(day)))
-				Directory.CreateDirectory(EnvironmentConstants.OutputPath(day));
+			Directory.CreateDirectory(fileDirectory);
 
 			File.WriteAllLines(filePath, lines);
 
 			Console.WriteLine($"Wrote output data to: {filePath}");
 		}
 
-		public static void Write(int day, string fileName, string line)
+		public static void Write(string challenge, string fileName, string line)
 		{
-			Write(day, fileName, new List<string> {line}.ToArray());
+			Write(challenge, fileName, new List<string> {line}.ToArray());
 		}
 	}
 }

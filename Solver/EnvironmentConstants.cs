@@ -6,20 +6,20 @@ namespace Solver
 	public static class EnvironmentConstants
 	{
 		// ReSharper disable PossibleNullReferenceException
-		public static string DataPath(int day)
+		public static string DataPath()
 		{
-			return Path.Combine(new FileInfo(typeof(IParser<bool>).Assembly.Location).Directory.Parent.Parent.Parent.Parent.ToString(), "Solver", "Challenges", "Day" + day);
+			return Path.Combine(new FileInfo(typeof(IParser<bool>).Assembly.Location).Directory.Parent.Parent.Parent.Parent.ToString(), "Solver", "Challenges");
 		}
 		// ReSharper restore PossibleNullReferenceException
 
-		public static string InputPath(int day)
+		public static string InputPath(string fileName)
 		{
-			return Path.Combine(DataPath(day), "day" + day + ".in");
+			return Path.Combine(DataPath(), fileName);
 		}
 
-		public static string OutputPath(int day)
+		public static string OutputPath(string challenge, string fileName)
 		{
-			return Path.Combine(DataPath(day), "Output");
+			return Path.Combine(DataPath(), challenge, "Output", fileName);
 		}
 	}
 }

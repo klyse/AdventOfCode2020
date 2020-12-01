@@ -7,9 +7,9 @@ namespace Solver.Challenges.Day1
 	{
 		public Day1Input Parse(string[] values)
 		{
-			var modules = values.Select(int.Parse);
+			var expenses = values.Select(int.Parse);
 
-			return new Day1Input(modules);
+			return new Day1Input(expenses);
 		}
 	}
 }

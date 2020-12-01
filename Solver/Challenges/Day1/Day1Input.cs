@@ -2,5 +2,5 @@
 
 namespace Solver.Challenges.Day1
 {
-	public sealed record Day1Input(IEnumerable<int> Modules);
+	public sealed record Day1Input(IEnumerable<int> Expenses);
 }

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using Solver.Base;
 
 namespace Solver.Challenges.Day1
@@ -7,28 +7,23 @@ namespace Solver.Challenges.Day1
 	{
 		public int Star1(Day1Input input)
 		{
-			return input.Modules.Select(c => c / 3 - 2).Sum(c => c);
+			foreach (var expense1 in input.Expenses)
+			foreach (var expense2 in input.Expenses)
+				if (expense1 + expense2 == 2020)
+					return expense1 * expense2;
+
+			throw new Exception("not found");
 		}
 
 		public int Star2(Day1Input input)
 		{
-			var fuel = input.Modules.Select(c =>
-			{
-				var calcFuel = c / 3 - 2;
-				var addFuel = calcFuel;
-				while (true)
-				{
-					addFuel = addFuel / 3 - 2;
-					if (addFuel <= 0)
-						break;
-					calcFuel += addFuel;
-				}
+			foreach (var expense1 in input.Expenses)
+			foreach (var expense2 in input.Expenses)
+			foreach (var expense3 in input.Expenses)
+				if (expense1 + expense2 + expense3 == 2020)
+					return expense1 * expense2 * expense3;
 
-				return calcFuel;
-			}).Sum(c => c);
-
-
-			return fuel;
+			throw new Exception("not found");
 		}
 	}
 }

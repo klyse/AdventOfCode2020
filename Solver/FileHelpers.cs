@@ -15,7 +15,7 @@ namespace Solver
 
 		public static void Write(string challenge, string fileName, string[] lines)
 		{
-			var filePath = EnvironmentConstants.OutputPath(challenge,fileName);
+			var filePath = EnvironmentConstants.OutputPath(challenge, fileName);
 			var fileDirectory = Path.GetDirectoryName(filePath);
 			if (string.IsNullOrWhiteSpace(fileDirectory))
 				throw new NullReferenceException("Directory does not exist");

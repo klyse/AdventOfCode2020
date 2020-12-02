@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using Solver.Base;
 
 namespace Solver.Challenges.Day2
@@ -7,23 +7,26 @@ namespace Solver.Challenges.Day2
 	{
 		public int Star1(Day2Input input)
 		{
-			foreach (var expense1 in input.Expenses)
-			foreach (var expense2 in input.Expenses)
-				if (expense1 + expense2 == 2020)
-					return expense1 * expense2;
+			var correct = 0;
+			foreach (var password in input.Passwords)
+			{
+				var cnt = password.Pwd.Count(c => c == password.C);
+				if (cnt >= password.Pos1 && cnt <= password.Pos2)
+					correct++;
+			}
 
-			throw new Exception("not found");
+			return correct;
 		}
 
 		public int Star2(Day2Input input)
 		{
-			foreach (var expense1 in input.Expenses)
-			foreach (var expense2 in input.Expenses)
-			foreach (var expense3 in input.Expenses)
-				if (expense1 + expense2 + expense3 == 2020)
-					return expense1 * expense2 * expense3;
+			var correct = 0;
+			foreach (var password in input.Passwords)
+				if ((password.Pwd[password.Pos1 - 1] == password.C) ^
+				    (password.Pwd[password.Pos2 - 1] == password.C))
+					correct++;
 
-			throw new Exception("not found");
+			return correct;
 		}
 	}
 }

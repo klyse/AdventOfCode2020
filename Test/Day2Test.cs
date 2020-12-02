@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using NUnit.Framework;
 using Solver;
-using Solver.Challenges.Day1;
 using Solver.Challenges.Day2;
 
 namespace Test
@@ -34,27 +33,35 @@ namespace Test
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(805731, solution);
+			Assert.AreEqual(546, solution);
 		}
 
 		[Test]
-		public void Star1_Test1()
+		[TestCase("1-3 a: abcde", ExpectedResult = true)]
+		[TestCase("1-3 b: cdefg", ExpectedResult = false)]
+		[TestCase("2-9 c: ccccccccc", ExpectedResult = true)]
+		public bool Star1_Tests(string input)
 		{
-			_input = new[]
-			{
-				"1721",
-				"979",
-				"366",
-				"299",
-				"675",
-				"1456"
-			};
-			_parsedInput = _parser.Parse(_input);
+			_parsedInput = _parser.Parse(new[] {input});
 
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(514579, solution);
+			return solution == 1;
+		}
+
+		[Test]
+		[TestCase("1-3 a: abcde", ExpectedResult = true)]
+		[TestCase("1-3 b: cdefg", ExpectedResult = false)]
+		[TestCase("2-9 c: ccccccccc", ExpectedResult = false)]
+		public bool Star2_Tests(string input)
+		{
+			_parsedInput = _parser.Parse(new[] {input});
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			return solution == 1;
 		}
 
 		[Test]
@@ -66,7 +73,7 @@ namespace Test
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(192684960, solution);
+			Assert.AreEqual(275, solution);
 		}
 	}
 }

@@ -33,7 +33,59 @@ namespace Test
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(546, solution);
+			Assert.AreEqual(268, solution);
+		}
+
+		[Test]
+		public void Star1_Test1()
+		{
+			_input = new[]
+			{
+				"..##.......",
+				"#...#...#..",
+				".#....#..#.",
+				"..#.#...#.#",
+				".#...##..#.",
+				"..#.##.....",
+				".#.#.#....#",
+				".#........#",
+				"#.##...#...",
+				"#...##....#",
+				".#..#...#.#"
+			};
+
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star1(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(7, solution);
+		}
+
+		[Test]
+		public void Star2_Test1()
+		{
+			_input = new[]
+			{
+				"..##.......",
+				"#...#...#..",
+				".#....#..#.",
+				"..#.#...#.#",
+				".#...##..#.",
+				"..#.##.....",
+				".#.#.#....#",
+				".#........#",
+				"#.##...#...",
+				"#...##....#",
+				".#..#...#.#"
+			};
+
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(336, solution);
 		}
 
 		[Test]
@@ -45,7 +97,7 @@ namespace Test
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(275, solution);
+			Assert.AreEqual(3093068400m, solution);
 		}
 	}
 }

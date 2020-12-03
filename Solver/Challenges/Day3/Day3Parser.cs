@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using NeoMatrix;
 using Solver.Base;
 
 namespace Solver.Challenges.Day3
@@ -8,18 +8,20 @@ namespace Solver.Challenges.Day3
 	{
 		public Day3Input Parse(string[] values)
 		{
-			var expenses = values.Select(s =>
+			var rows = values.Length;
+			var columns = values[0].Length;
+
+			var matrix = Matrix<CellType>.NewMatrix(rows, columns, (row, column) =>
 			{
-				var splitByMinus = s.Split(new[] {'-', ' ', ':'}, StringSplitOptions.RemoveEmptyEntries);
-				return new Password(
-					int.Parse(splitByMinus.ElementAt(0)),
-					int.Parse(splitByMinus.ElementAt(1)),
-					splitByMinus.ElementAt(2)[0],
-					splitByMinus.ElementAt(3)
-				);
+				return values[row][column] switch
+				{
+					'#' => CellType.Tree,
+					'.' => CellType.Space,
+					_ => throw new Exception("not found")
+				};
 			});
 
-			return new Day3Input(expenses);
+			return new Day3Input(matrix);
 		}
 	}
 }

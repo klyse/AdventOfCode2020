@@ -1,32 +1,47 @@
-﻿using System.Linq;
-using Solver.Base;
+﻿using Solver.Base;
 
 namespace Solver.Challenges.Day3
 {
-	public class Day3Solver : ISolver<int, Day3Input>
+	public class Day3Solver : ISolver<decimal, Day3Input>
 	{
-		public int Star1(Day3Input input)
+		public decimal Star1(Day3Input input)
 		{
-			var correct = 0;
-			foreach (var password in input.Passwords)
-			{
-				var cnt = password.Pwd.Count(c => c == password.C);
-				if (cnt >= password.Pos1 && cnt <= password.Pos2)
-					correct++;
-			}
+			var treeCount = CalculateEncounteringTrees(input, 1, 3);
 
-			return correct;
+			return treeCount;
 		}
 
-		public int Star2(Day3Input input)
+		public decimal Star2(Day3Input input)
 		{
-			var correct = 0;
-			foreach (var password in input.Passwords)
-				if ((password.Pwd[password.Pos1 - 1] == password.C) ^
-				    (password.Pwd[password.Pos2 - 1] == password.C))
-					correct++;
+			var trees = new decimal[]
+			{
+				CalculateEncounteringTrees(input, 1, 1),
+				CalculateEncounteringTrees(input, 1, 3),
+				CalculateEncounteringTrees(input, 1, 5),
+				CalculateEncounteringTrees(input, 1, 7),
+				CalculateEncounteringTrees(input, 2, 1)
+			};
 
-			return correct;
+			decimal sum = 1;
+			foreach (var tree in trees) sum *= tree;
+
+			return sum;
+		}
+
+		private static int CalculateEncounteringTrees(Day3Input input, int rowStride, int columnSride)
+		{
+			var treeCount = 0;
+			var column = 0;
+			for (var row = rowStride; row < input.Matrix.Rows; row += rowStride)
+			{
+				column += columnSride;
+				column %= input.Matrix.Columns;
+
+				if (input.Matrix[row, column] == CellType.Tree)
+					treeCount++;
+			}
+
+			return treeCount;
 		}
 	}
 }

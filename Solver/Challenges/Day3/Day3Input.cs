@@ -1,6 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using NeoMatrix;
 
 namespace Solver.Challenges.Day3
 {
-	public sealed record Day3Input(IEnumerable<Password> Passwords);
+	public enum CellType
+	{
+		Tree,
+		Space
+	}
+
+	public sealed record Day3Input(Matrix<CellType> Matrix);
 }

@@ -72,7 +72,6 @@ namespace Test
 
 			var solution = _solver.Star2(_parsedInput);
 
-			Console.WriteLine("166 too high");
 			Console.WriteLine(solution);
 			Assert.AreEqual(153, solution);
 		}

@@ -7,14 +7,6 @@ namespace Solver.Challenges.Day4
 {
 	public class Day4Parser : IParser<Day4Input>
 	{
-		string TakeIfExists(Dictionary<string, string> dict, string str)
-		{
-			if (dict.ContainsKey(str))
-				return dict[str];
-
-			return "";
-		}
-
 		// add two new lines to the end of the input file!!
 		public Day4Input Parse(string[] values)
 		{
@@ -69,6 +61,14 @@ namespace Solver.Challenges.Day4
 			}
 
 			return new Day4Input(passports);
+		}
+
+		private string TakeIfExists(Dictionary<string, string> dict, string str)
+		{
+			if (dict.ContainsKey(str))
+				return dict[str];
+
+			return "";
 		}
 	}
 }

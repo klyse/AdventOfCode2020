@@ -74,7 +74,7 @@ namespace Test
 
 			Console.WriteLine("166 too high");
 			Console.WriteLine(solution);
-			Assert.AreEqual(3093068400m, solution);
+			Assert.AreEqual(153, solution);
 		}
 
 		[Test]

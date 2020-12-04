@@ -32,12 +32,9 @@ namespace Solver.Challenges.Day4
 								r => r.Split(':').First(),
 								r => r.Split(':').ElementAt(1));
 
-						var byr = 0;
-						int.TryParse(TakeIfExists(valueDict, "byr"), out byr);
-						var iyr = 0;
-						int.TryParse(TakeIfExists(valueDict, "iyr"), out iyr);
-						var eyr = 0;
-						int.TryParse(TakeIfExists(valueDict, "eyr"), out eyr);
+						int.TryParse(TakeIfExists(valueDict, "byr"), out var byr);
+						int.TryParse(TakeIfExists(valueDict, "iyr"), out var iyr);
+						int.TryParse(TakeIfExists(valueDict, "eyr"), out var eyr);
 						var hgtS = TakeIfExists(valueDict, "hgt");
 						var hgtMatch = Regex.Match(hgtS, @"[a-z]+");
 						var hgtType = "";

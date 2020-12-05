@@ -33,7 +33,51 @@ namespace Test
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(260, solution);
+			Assert.AreEqual(883, solution);
+		}
+
+		[Test]
+		public void GetRowColumn_Test1()
+		{
+			var (row, column) = _solver.GetRowColumnNumber("FBFBBFFRLR");
+			Assert.AreEqual(44, row);
+			Assert.AreEqual(5, column);
+		}
+
+		[Test]
+		public void GetRowColumn_Test2()
+		{
+			var (row, column) = _solver.GetRowColumnNumber("BFFFBBFRRR");
+			Assert.AreEqual(70, row);
+			Assert.AreEqual(7, column);
+		}
+
+		[Test]
+		public void GetRowColumn_Test3()
+		{
+			var (row, column) = _solver.GetRowColumnNumber("FFFBBBFRRR");
+			Assert.AreEqual(14, row);
+			Assert.AreEqual(7, column);
+		}
+
+		[Test]
+		public void GetRowColumn_Test4()
+		{
+			var (row, column) = _solver.GetRowColumnNumber("BBFFBBFRLL");
+			Assert.AreEqual(102, row);
+			Assert.AreEqual(4, column);
+		}
+
+
+		[Test]
+		[TestCase("FBFBBFFRLR", ExpectedResult = 357)]
+		[TestCase("BFFFBBFRRR", ExpectedResult = 567)]
+		[TestCase("FFFBBBFRRR", ExpectedResult = 119)]
+		[TestCase("BBFFBBFRLL", ExpectedResult = 820)]
+		public int GetSeatId_Test1(string command)
+		{
+			var seatId = _solver.GetSeatId(command);
+			return seatId;
 		}
 
 		[Test]
@@ -45,7 +89,7 @@ namespace Test
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(153, solution);
+			Assert.AreEqual(532, solution);
 		}
 	}
 }

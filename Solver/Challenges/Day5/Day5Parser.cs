@@ -6,7 +6,7 @@ namespace Solver.Challenges.Day5
 	{
 		public Day5Input Parse(string[] values)
 		{
-			return new();
+			return new(values);
 		}
 	}
 }

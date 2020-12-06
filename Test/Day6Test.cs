@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using NUnit.Framework;
 using Solver;
-using Solver.Challenges.Day5;
 using Solver.Challenges.Day6;
 
 namespace Test
@@ -14,39 +13,93 @@ namespace Test
 		private readonly string _filePath = Path.Combine(BasePath, FileName);
 
 		private string[] _input;
-		private Day6Input _parsedInput;
-		private Day6Parser _parser;
 		private Day6Solver _solver;
 
 		[SetUp]
 		public void SetUp()
 		{
 			_solver = new Day6Solver();
-			_parser = new Day6Parser();
 		}
 
+		// add two new lines at end of file
 		[Test]
 		public void Star1()
 		{
 			_input = FileHelpers.Read(_filePath);
-			_parsedInput = _parser.Parse(_input);
 
-			var solution = _solver.Star1(_parsedInput);
+			var solution = _solver.Star1(_input);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(883, solution);
+			Assert.AreEqual(6583, solution);
+		}
+
+		[Test]
+		public void Star1_Test1()
+		{
+			_input = new[]
+			{
+				"abc",
+				"",
+				"a",
+				"b",
+				"c",
+				"",
+				"ab",
+				"ac",
+				"",
+				"a",
+				"a",
+				"a",
+				"a",
+				"",
+				"b",
+				""
+			};
+
+			var solution = _solver.Star1(_input);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(11, solution);
 		}
 
 		[Test]
 		public void Star2()
 		{
 			_input = FileHelpers.Read(_filePath);
-			_parsedInput = _parser.Parse(_input);
 
-			var solution = _solver.Star2(_parsedInput);
+			var solution = _solver.Star2(_input);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(532, solution);
+			Assert.AreEqual(3290, solution);
+		}
+
+		[Test]
+		public void Star2_Test1()
+		{
+			_input = new[]
+			{
+				"abc",
+				"",
+				"a",
+				"b",
+				"c",
+				"",
+				"ab",
+				"ac",
+				"",
+				"a",
+				"a",
+				"a",
+				"a",
+				"",
+				"b",
+				""
+			};
+
+			var solution = _solver.Star2(_input);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(6, solution);
 		}
 	}
 }

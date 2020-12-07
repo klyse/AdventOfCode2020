@@ -1,64 +1,61 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Solver.Base;
 
 namespace Solver.Challenges.Day7
 {
-	public class Day7Solver : ISolver<int, Day7Input>
+	public class Day7Solver
 	{
-		public int Star1(Day7Input input)
+		private void AssignCanContain(ICollection<Bag> tree)
 		{
-			return input.Commands.Max(GetSeatId);
-		}
-
-		public int Star2(Day7Input input)
-		{
-			var setIds = input.Commands
-				.Select(GetSeatId)
-				.OrderBy(c => c)
-				.ToList();
-
-			for (var i = 0; i < setIds.Max(); i++)
-				if (!setIds.Contains(i) &&
-				    setIds.Contains(i - 1) &&
-				    setIds.Contains(i + 1))
-					return i;
-
-			throw new Exception("not found");
-		}
-
-		public (int, int) GetRowColumnNumber(string command)
-		{
-			var min = 0;
-			var max = 127;
-			var minC = 0;
-			var maxC = 7;
-
-			foreach (var t in command)
-				switch (t)
+			foreach (var item in tree)
+			{
+				foreach (var bag in item.CanContain)
 				{
-					case 'F':
-						max = min + (max - min) / 2;
-						break;
-					case 'B':
-						min = min + (max - min) / 2 + 1;
-						break;
-					case 'R':
-						minC = minC + (maxC - minC) / 2 + 1;
-						break;
-					case 'L':
-						maxC = minC + (maxC - minC) / 2;
-						break;
+					bag.CanContain = tree.First(r => r.Color == bag.Color).CanContain;
 				}
-
-			return (min, minC);
+			}
 		}
 
-		public int GetSeatId(string command)
+		public int Star1(string[] input)
 		{
-			var (row, column) = GetRowColumnNumber(command);
+			var tree = new List<Bag>();
+			foreach (var s in input)
+			{
+				var splitString = s.Split(new[] {"bags", "contain", ",", ".", "bag"},
+					StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
-			return row * 8 + column;
+				var bag = new Bag
+				{
+					Color = splitString[0],
+				};
+				tree.Add(bag);
+
+				if (splitString.Contains("no other"))
+					continue;
+
+				foreach (var s1 in splitString.Skip(1))
+				{
+					bag.CanContain.Add(new Bag
+					{
+						Count = int.Parse(Regex.Match(s1, @"\d").Value),
+						Color = Regex.Match(s1, @"(?<=\d\s).*").Value
+					});
+				}
+			}
+
+			AssignCanContain(tree);
+
+			var shinyGoldContainingBags = tree.Count(r => r.CanContainColor("shiny gold"));
+
+			return shinyGoldContainingBags;
+		}
+
+		public int Star2(string[] input)
+		{
+			return 0;
 		}
 	}
 }

@@ -5,14 +5,18 @@ namespace Solver.Challenges.Day7
 {
 	public sealed class Bag
 	{
-		public string Color { get; init; }
-		public Bag Parent { get; set; }
-		public ICollection<Bag> CanContain { get; set; }
-		public int Count { get; init; }
-
 		public Bag()
 		{
 			CanContain = new List<Bag>();
+		}
+
+		public string Color { get; init; }
+		public ICollection<Bag> CanContain { get; set; }
+		public int Count { get; init; }
+
+		public int SubBagsCount(int level = 1)
+		{
+			return CanContain.Sum(r => level * (r.Count + r.SubBagsCount(r.Count)));
 		}
 
 		public bool CanContainColor(string color)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
 using Solver;
@@ -13,20 +14,25 @@ namespace Test
 		private readonly string _filePath = Path.Combine(BasePath, FileName);
 
 		private string[] _input;
+		private IReadOnlyCollection<Bag> _parsedInput;
+		private Day7Parser _parser;
 		private Day7Solver _solver;
+
 
 		[SetUp]
 		public void SetUp()
 		{
 			_solver = new Day7Solver();
+			_parser = new Day7Parser();
 		}
 
 		[Test]
 		public void Star1()
 		{
 			_input = FileHelpers.Read(_filePath);
+			_parsedInput = _parser.Parse(_input);
 
-			var solution = _solver.Star1(_input);
+			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
 			Assert.AreEqual(248, solution);
@@ -48,7 +54,9 @@ namespace Test
 				"dotted black bags contain no other bags."
 			};
 
-			var solution = _solver.Star1(_input);
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
 			Assert.AreEqual(4, solution);
@@ -58,8 +66,9 @@ namespace Test
 		public void Star2()
 		{
 			_input = FileHelpers.Read(_filePath);
+			_parsedInput = _parser.Parse(_input);
 
-			var solution = _solver.Star2(_input);
+			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
 			Assert.AreEqual(57281, solution);
@@ -81,7 +90,9 @@ namespace Test
 				"dotted black bags contain no other bags."
 			};
 
-			var solution = _solver.Star2(_input);
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
 			Assert.AreEqual(32, solution);
@@ -101,7 +112,9 @@ namespace Test
 				"dark violet bags contain no other bags."
 			};
 
-			var solution = _solver.Star2(_input);
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
 			Assert.AreEqual(126, solution);

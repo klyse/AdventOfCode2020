@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Solver.Challenges.Day7
 {
-	public sealed class Bag
+	public sealed record Bag
 	{
 		public Bag()
 		{

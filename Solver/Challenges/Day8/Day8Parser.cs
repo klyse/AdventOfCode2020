@@ -1,4 +1,6 @@
-﻿using Solver.Base;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Solver.Base;
 
 namespace Solver.Challenges.Day8
 {
@@ -6,7 +8,19 @@ namespace Solver.Challenges.Day8
 	{
 		public Day8Input Parse(string[] values)
 		{
-			return new(values);
+			var instructions = new List<Instruction>();
+			var index = 0;
+			foreach (var value in values)
+			{
+				var split = value.Split(' ');
+				instructions.Add(
+					new Instruction(split[0],
+						int.Parse(split[1]),
+						index));
+				index++;
+			}
+
+			return new Day8Input(instructions);
 		}
 	}
 }

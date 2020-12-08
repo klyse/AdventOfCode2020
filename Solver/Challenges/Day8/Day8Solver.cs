@@ -33,10 +33,6 @@ namespace Solver.Challenges.Day8
 				}
 			}
 
-			var strs = input.Instructions.Select(r => $"{r.Operation}	{r.Argument:000}:	{r.Index} {(visitedIndexes.Contains(r.Index) ? 'y' : 'n')} {r.Index + r.Argument}");
-
-			FileHelpers.Write("Day8", "testOut", strs.ToArray());
-
 			return accumulator;
 		}
 

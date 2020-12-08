@@ -49,7 +49,7 @@ namespace Test
 				"acc -99",
 				"acc +1",
 				"jmp -4",
-				"acc +6",
+				"acc +6"
 			};
 			_parsedInput = _parser.Parse(_input);
 
@@ -63,13 +63,12 @@ namespace Test
 		public void Star2()
 		{
 			_input = FileHelpers.Read(_filePath);
-			// _input[596] = "nop -202";
 			_parsedInput = _parser.Parse(_input);
 
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(532, solution);
+			Assert.AreEqual(1532, solution);
 		}
 
 		[Test]
@@ -84,8 +83,8 @@ namespace Test
 				"jmp -3",
 				"acc -99",
 				"acc +1",
-				"nop -4", // changed jmp -4
-				"acc +6",
+				"jmp -4",
+				"acc +6"
 			};
 			_parsedInput = _parser.Parse(_input);
 

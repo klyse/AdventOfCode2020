@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Solver.Base;
 
 namespace Solver.Challenges.Day8

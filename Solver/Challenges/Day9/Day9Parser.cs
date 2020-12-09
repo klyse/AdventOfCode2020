@@ -1,12 +1,15 @@
-﻿using Solver.Base;
+﻿using System.Linq;
+using Solver.Base;
 
 namespace Solver.Challenges.Day9
 {
-	public class Day9Parser : IParser<Day9Input>
+	public class Day9Parser
 	{
-		public Day9Input Parse(string[] values)
+		public Day9Input Parse(int preamble, string[] values)
 		{
-			return new();
+			var numbers = values.Select(double.Parse).ToList();
+
+			return new Day9Input(preamble, numbers);
 		}
 	}
 }

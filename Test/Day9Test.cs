@@ -28,7 +28,7 @@ namespace Test
 		public void Star1()
 		{
 			_input = FileHelpers.Read(_filePath);
-			_parsedInput = _parser.Parse(_input);
+			_parsedInput = _parser.Parse(25, _input);
 
 			var solution = _solver.Star1(_parsedInput);
 
@@ -37,10 +37,44 @@ namespace Test
 		}
 
 		[Test]
+		public void Star1_Test1()
+		{
+			_input = new[]
+			{
+				"35",
+				"20",
+				"15",
+				"25",
+				"47",
+				"40",
+				"62",
+				"55",
+				"65",
+				"95",
+				"102",
+				"117",
+				"150",
+				"182",
+				"127",
+				"219",
+				"299",
+				"277",
+				"309",
+				"576",
+			};
+			_parsedInput = _parser.Parse(5, _input);
+
+			var solution = _solver.Star1(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(127, solution);
+		}
+
+		[Test]
 		public void Star2()
 		{
 			_input = FileHelpers.Read(_filePath);
-			_parsedInput = _parser.Parse(_input);
+			_parsedInput = _parser.Parse(25, _input);
 
 			var solution = _solver.Star2(_parsedInput);
 

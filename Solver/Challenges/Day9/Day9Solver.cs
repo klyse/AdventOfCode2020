@@ -39,7 +39,29 @@ namespace Solver.Challenges.Day9
 
 		public double Star2(Day9Input input)
 		{
-			return 0;
+			var star1 = Star1(input);
+
+			var sum = 0.0;
+			var first = 0;
+			var last = 0;
+			while (sum != star1)
+			{
+				if (sum > star1)
+				{
+					sum -= input.Numbers[first];
+					first++;
+				}
+				else if (sum < star1)
+				{
+					sum += input.Numbers[last];
+					last++;
+				}
+			}
+
+			var contiguousSet = input.Numbers.Skip(first).Take(last - first).ToList();
+
+			return contiguousSet.Min() +
+			       contiguousSet.Max();
 		}
 	}
 }

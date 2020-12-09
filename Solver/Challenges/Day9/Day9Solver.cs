@@ -15,18 +15,16 @@ namespace Solver.Challenges.Day9
 				var notFoundSum = false;
 
 				for (var x1 = i - input.Preamble; x1 < i && !notFoundSum; x1++)
+				for (var x2 = i - input.Preamble + 1; x2 < i; x2++)
 				{
-					for (var x2 = i - input.Preamble + 1; x2 < i; x2++)
+					// ReSharper disable once CompareOfFloatsByEqualityOperator
+					if (input.Numbers[x1] == input.Numbers[x2])
+						continue;
+					// ReSharper disable once CompareOfFloatsByEqualityOperator
+					if (input.Numbers[x1] + input.Numbers[x2] == number)
 					{
-						// ReSharper disable once CompareOfFloatsByEqualityOperator
-						if (input.Numbers[x1] == input.Numbers[x2])
-							continue;
-						// ReSharper disable once CompareOfFloatsByEqualityOperator
-						if (input.Numbers[x1] + input.Numbers[x2] == number)
-						{
-							notFoundSum = true;
-							break;
-						}
+						notFoundSum = true;
+						break;
 					}
 				}
 
@@ -45,7 +43,6 @@ namespace Solver.Challenges.Day9
 			var first = 0;
 			var last = 0;
 			while (sum != star1)
-			{
 				if (sum > star1)
 				{
 					sum -= input.Numbers[first];
@@ -56,7 +53,6 @@ namespace Solver.Challenges.Day9
 					sum += input.Numbers[last];
 					last++;
 				}
-			}
 
 			var contiguousSet = input.Numbers.Skip(first).Take(last - first).ToList();
 

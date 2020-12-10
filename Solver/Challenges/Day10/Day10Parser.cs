@@ -1,12 +1,14 @@
-﻿using Solver.Base;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Solver.Base;
 
 namespace Solver.Challenges.Day10
 {
-	public class Day10Parser : IParser<Day10Input>
+	public class Day10Parser : IParser<IReadOnlyCollection<int>>
 	{
-		public Day10Input Parse(string[] values)
+		public IReadOnlyCollection<int> Parse(string[] values)
 		{
-			return new();
+			return values.Select(int.Parse).ToList();
 		}
 	}
 }

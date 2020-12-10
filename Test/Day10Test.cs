@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
 using Solver;
@@ -13,7 +14,7 @@ namespace Test
 		private readonly string _filePath = Path.Combine(BasePath, FileName);
 
 		private string[] _input;
-		private Day10Input _parsedInput;
+		private IReadOnlyCollection<int> _parsedInput;
 		private Day10Parser _parser;
 		private Day10Solver _solver;
 
@@ -33,7 +34,7 @@ namespace Test
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(1124361034, solution);
+			Assert.AreEqual(2343, solution);
 		}
 
 		[Test]
@@ -41,33 +42,69 @@ namespace Test
 		{
 			_input = new[]
 			{
-				"35",
-				"20",
+				"16",
+				"10",
 				"15",
-				"25",
-				"47",
-				"40",
-				"62",
-				"55",
-				"65",
-				"95",
-				"102",
-				"117",
-				"150",
-				"182",
-				"127",
-				"219",
-				"299",
-				"277",
-				"309",
-				"576"
+				"5",
+				"1",
+				"11",
+				"7",
+				"19",
+				"6",
+				"12",
+				"4"
 			};
 			_parsedInput = _parser.Parse(_input);
 
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(127, solution);
+			Assert.AreEqual(7 * 5, solution);
+		}
+
+		[Test]
+		public void Star1_Test2()
+		{
+			_input = new[]
+			{
+				"28",
+				"33",
+				"18",
+				"42",
+				"31",
+				"14",
+				"46",
+				"20",
+				"48",
+				"47",
+				"24",
+				"23",
+				"49",
+				"45",
+				"19",
+				"38",
+				"39",
+				"11",
+				"1",
+				"32",
+				"25",
+				"35",
+				"8",
+				"17",
+				"7",
+				"9",
+				"4",
+				"2",
+				"34",
+				"10",
+				"3"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star1(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(22 * 10, solution);
 		}
 
 		[Test]
@@ -79,41 +116,78 @@ namespace Test
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(129444555, solution);
+			Assert.AreEqual(31581162962944, solution);
 		}
+
 
 		[Test]
 		public void Star2_Test1()
 		{
 			_input = new[]
 			{
-				"35",
-				"20",
+				"16",
+				"10",
 				"15",
-				"25",
-				"47",
-				"40",
-				"62",
-				"55",
-				"65",
-				"95",
-				"102",
-				"117",
-				"150",
-				"182",
-				"127",
-				"219",
-				"299",
-				"277",
-				"309",
-				"576"
+				"5",
+				"1",
+				"11",
+				"7",
+				"19",
+				"6",
+				"12",
+				"4"
 			};
 			_parsedInput = _parser.Parse(_input);
 
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(62, solution);
+			Assert.AreEqual(8, solution);
+		}
+
+		[Test]
+		public void Star2_Test2()
+		{
+			_input = new[]
+			{
+				"28",
+				"33",
+				"18",
+				"42",
+				"31",
+				"14",
+				"46",
+				"20",
+				"48",
+				"47",
+				"24",
+				"23",
+				"49",
+				"45",
+				"19",
+				"38",
+				"39",
+				"11",
+				"1",
+				"32",
+				"25",
+				"35",
+				"8",
+				"17",
+				"7",
+				"9",
+				"4",
+				"2",
+				"34",
+				"10",
+				"3"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(19208, solution);
 		}
 	}
 }

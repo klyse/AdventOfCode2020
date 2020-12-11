@@ -2,8 +2,7 @@ using System;
 using System.IO;
 using NUnit.Framework;
 using Solver;
-using Solver.Challenges.Day1;
-using Solver.Challenges.Day2;
+using Solver.Challenges.Day11;
 
 namespace Test
 {
@@ -34,7 +33,7 @@ namespace Test
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(805731, solution);
+			Assert.AreEqual(2296, solution);
 		}
 
 		[Test]
@@ -42,19 +41,23 @@ namespace Test
 		{
 			_input = new[]
 			{
-				"1721",
-				"979",
-				"366",
-				"299",
-				"675",
-				"1456"
+				"L.LL.LL.LL",
+				"LLLLLLL.LL",
+				"L.L.L..L..",
+				"LLLL.LL.LL",
+				"L.LL.LL.LL",
+				"L.LLLLL.LL",
+				"..L.L.....",
+				"LLLLLLLLLL",
+				"L.LLLLLL.L",
+				"L.LLLLL.LL"
 			};
 			_parsedInput = _parser.Parse(_input);
 
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(514579, solution);
+			Assert.AreEqual(37, solution);
 		}
 
 		[Test]
@@ -66,7 +69,93 @@ namespace Test
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(192684960, solution);
+			Assert.AreEqual(2089, solution);
+		}
+
+
+		[Test]
+		public void GetOccupiedSeats_Test1()
+		{
+			_input = new[]
+			{
+				".......#.",
+				"...#.....",
+				".#.......",
+				".........",
+				"..#L....#",
+				"....#....",
+				".........",
+				"#........",
+				"...#....."
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = Day11Solver.GetOccupiedSeats(_parsedInput.Matrix, 3, 4);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(8, solution);
+		}
+
+		[Test]
+		public void GetOccupiedSeats_Test2()
+		{
+			_input = new[]
+			{
+				".##.##.",
+				"#.#.#.#",
+				"##...##",
+				"...L...",
+				"##...##",
+				"#.#.#.#",
+				".##.##."
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = Day11Solver.GetOccupiedSeats(_parsedInput.Matrix, 3, 3);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(0, solution);
+		}
+
+		[Test]
+		public void GetOccupiedSeats_Test3()
+		{
+			_input = new[]
+			{
+				".............",
+				".L.L.#.#.#.#.",
+				"............."
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = Day11Solver.GetOccupiedSeats(_parsedInput.Matrix, 1, 1);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(0, solution);
+		}
+
+		[Test]
+		public void Star2_Test1()
+		{
+			_input = new[]
+			{
+				"L.LL.LL.LL",
+				"LLLLLLL.LL",
+				"L.L.L..L..",
+				"LLLL.LL.LL",
+				"L.LL.LL.LL",
+				"L.LLLLL.LL",
+				"..L.L.....",
+				"LLLLLLLLLL",
+				"L.LLLLLL.L",
+				"L.LLLLL.LL"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(26, solution);
 		}
 	}
 }

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using NeoMatrix;
 
-namespace Solver.Challenges.Day2
+namespace Solver.Challenges.Day11
 {
-	public sealed record Day11Input();
+	public sealed record Day11Input(Matrix<char> Matrix);
 }

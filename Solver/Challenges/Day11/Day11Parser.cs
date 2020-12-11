@@ -1,14 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using NeoMatrix;
 using Solver.Base;
 
-namespace Solver.Challenges.Day2
+namespace Solver.Challenges.Day11
 {
 	public class Day11Parser : IParser<Day11Input>
 	{
 		public Day11Input Parse(string[] values)
 		{
-			return new ();
+			return new(Matrix<char>.NewMatrix(values.Length,
+				values[0].Length,
+				(r, c) => values[r][c]));
 		}
 	}
 }

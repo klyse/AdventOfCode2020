@@ -70,7 +70,7 @@ namespace Solver.Challenges.Day11
 
 				var occupied = box.GetFlat().Count(x => x == '#');
 
-				// remove self because it is also in range
+				// remove sself because it is also in range
 				occupied -= ch == '#' ? 1 : 0;
 
 				if (ch == 'L' && occupied == 0)

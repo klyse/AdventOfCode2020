@@ -7,7 +7,7 @@ namespace Solver.Challenges.Day12
 	{
 		public Day12Input Parse(string[] values)
 		{
-			var expenses = values.Select(int.Parse);
+			var expenses = values.Select(r => new Command(r[0], int.Parse(r.Remove(0, 1))));
 
 			return new Day12Input(expenses);
 		}

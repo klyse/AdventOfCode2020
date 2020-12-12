@@ -33,7 +33,7 @@ namespace Test
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(805731, solution);
+			Assert.AreEqual(362, solution);
 		}
 
 		[Test]
@@ -41,19 +41,18 @@ namespace Test
 		{
 			_input = new[]
 			{
-				"1721",
-				"979",
-				"366",
-				"299",
-				"675",
-				"1456"
+				"F10",
+				"N3",
+				"F7",
+				"R90",
+				"F11"
 			};
 			_parsedInput = _parser.Parse(_input);
 
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(514579, solution);
+			Assert.AreEqual(25, solution);
 		}
 
 		[Test]
@@ -65,7 +64,26 @@ namespace Test
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(192684960, solution);
+			Assert.AreEqual(29895, solution);
+		}
+
+		[Test]
+		public void Star2_Test1()
+		{
+			_input = new[]
+			{
+				"F10",
+				"N3",
+				"F7",
+				"R90",
+				"F11"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(286, solution);
 		}
 	}
 }

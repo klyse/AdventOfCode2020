@@ -33,7 +33,7 @@ namespace Test
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(805731, solution);
+			Assert.AreEqual(1915, solution);
 		}
 
 		[Test]
@@ -41,19 +41,15 @@ namespace Test
 		{
 			_input = new[]
 			{
-				"1721",
-				"979",
-				"366",
-				"299",
-				"675",
-				"1456"
+				"939",
+				"7,13,x,x,59,x,31,19"
 			};
 			_parsedInput = _parser.Parse(_input);
 
 			var solution = _solver.Star1(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(514579, solution);
+			Assert.AreEqual(295, solution);
 		}
 
 		[Test]
@@ -66,6 +62,102 @@ namespace Test
 
 			Console.WriteLine(solution);
 			Assert.AreEqual(192684960, solution);
+		}
+
+		[Test]
+		public void Star2_Test1()
+		{
+			_input = new[]
+			{
+				"0",
+				"7,13,x,x,59,x,31,19"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(1068781m, solution);
+		}
+
+		[Test]
+		public void Star2_Test2()
+		{
+			_input = new[]
+			{
+				"0",
+				"17,x,13,19"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(3417m, solution);
+		}
+
+		[Test]
+		public void Star2_Test3()
+		{
+			_input = new[]
+			{
+				"0",
+				"67,7,59,61"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(754018m, solution);
+		}
+
+		[Test]
+		public void Star2_Test4()
+		{
+			_input = new[]
+			{
+				"0",
+				"67,x,7,59,61"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(779210m, solution);
+		}
+
+		[Test]
+		public void Star2_Test5()
+		{
+			_input = new[]
+			{
+				"0",
+				"67,7,x,59,61"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(1261476m, solution);
+		}
+
+		[Test]
+		public void Star2_Test6()
+		{
+			_input = new[]
+			{
+				"0",
+				"1789,37,47,1889"
+			};
+			_parsedInput = _parser.Parse(_input);
+
+			var solution = _solver.Star2(_parsedInput);
+
+			Console.WriteLine(solution);
+			Assert.AreEqual(1202161486m, solution);
 		}
 	}
 }

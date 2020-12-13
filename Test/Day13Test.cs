@@ -61,7 +61,7 @@ namespace Test
 			var solution = _solver.Star2(_parsedInput);
 
 			Console.WriteLine(solution);
-			Assert.AreEqual(192684960, solution);
+			Assert.AreEqual(294354277694107m, solution);
 		}
 
 		[Test]

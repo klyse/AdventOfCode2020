@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Solver.Base;
 
 namespace Solver.Challenges.Day13
@@ -14,10 +12,8 @@ namespace Solver.Challenges.Day13
 			while (true)
 			{
 				foreach (var inputBusId in validIds)
-				{
 					if (time % inputBusId == 0)
 						return (time - input.Arrival) * inputBusId;
-				}
 
 				time++;
 			}
